@@ -62,7 +62,7 @@ function reset() {
 
 onMounted(async () => {
   try {
-    const response = await fetch(withBase('/problem-index.json'))
+    const response = await fetch(`${withBase('/problem-index.json')}?v=${Date.now()}`, { cache: 'no-store' })
     if (!response.ok) throw new Error(`HTTP ${response.status}`)
     problems.value = await response.json()
   } catch (reason) {
