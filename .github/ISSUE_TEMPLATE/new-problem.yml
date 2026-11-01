@@ -1,6 +1,8 @@
 name: 提交新题
 description: 提交一道待审核的数学竞赛题目
 title: "[新题] "
+labels:
+  - 题目录入
 body:
   - type: markdown
     attributes:

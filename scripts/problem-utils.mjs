@@ -30,7 +30,7 @@ export function plainText(markdown) {
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .replace(/\$\$[\s\S]*?\$\$/g, ' [公式] ')
     .replace(/\\\([\s\S]*?\\\)/g, ' [公式] ')
-    .replace(/\$([^$]+)\$/g, ' $1 ')
+    .replace(/\$([^$]+)\$/g, ' [公式] ')
     .replace(/[#*_>`~|-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()

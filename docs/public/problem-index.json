@@ -11,7 +11,7 @@
     "stage": "初中竞赛入门",
     "source": "本站原创示例",
     "path": "/problems/algebra/MCB-A-001",
-    "statement": "设实数 x,y 满足 x+y=1 ，证明： [公式]"
+    "statement": "设实数 [公式] 满足 [公式] ，证明： [公式]"
   },
   {
     "id": "MCB-C-001",
@@ -26,7 +26,7 @@
     "stage": "初中竞赛",
     "source": "经典 Bertrand 投票问题（公开领域）",
     "path": "/problems/combinatorics/MCB-C-001",
-    "statement": "从 (0,0) 出发，每一步只能向右或向上移动一个单位，走到 (5,4) 。若途中始终满足 x\\geq y ，求不同走法的数量。"
+    "statement": "从 [公式] 出发，每一步只能向右或向上移动一个单位，走到 [公式] 。若途中始终满足 [公式] ，求不同走法的数量。"
   },
   {
     "id": "MCB-G-001",
@@ -41,7 +41,7 @@
     "stage": "初中竞赛入门",
     "source": "经典定理（公开领域）",
     "path": "/problems/geometry/MCB-G-001",
-    "statement": "在三角形 ABC 中，点 D,E 分别是边 AB,AC 的中点。证明： DE\\parallel BC ，且 DE=\\frac12BC 。"
+    "statement": "在三角形 [公式] 中，点 [公式] 分别是边 [公式] 的中点。证明： [公式] ，且 [公式] 。"
   },
   {
     "id": "MCB-N-001",
@@ -56,6 +56,6 @@
     "stage": "初中竞赛",
     "source": "经典问题（公开领域）",
     "path": "/problems/number-theory/MCB-N-001",
-    "statement": "证明：对任意整数 n ，都有 [公式]"
+    "statement": "证明：对任意整数 [公式] ，都有 [公式]"
   }
 ]
