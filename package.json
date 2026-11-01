@@ -1,0 +1,27 @@
+{
+  "name": "math-competition-bank",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run generate:index && vitepress dev docs",
+    "generate:index": "node scripts/generate-index.mjs",
+    "validate": "node scripts/validate-problems.mjs",
+    "typecheck": "vue-tsc --noEmit",
+    "check": "npm run validate && npm run generate:index && npm run typecheck",
+    "docs:build": "npm run generate:index && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "import": "node scripts/import-problems.mjs"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.2",
+    "fast-glob": "3.3.3",
+    "gray-matter": "4.0.3",
+    "markdown-it-mathjax3": "4.3.2",
+    "typescript": "^5.7.3",
+    "vitepress": "1.6.4",
+    "vue": "3.5.44",
+    "vue-tsc": "3.3.14"
+  }
+}
+

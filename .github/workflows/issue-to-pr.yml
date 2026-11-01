@@ -1,0 +1,49 @@
+name: 审核 Issue 转题目 PR
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  convert:
+    if: github.event.label.name == 'approved'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: 生成题目文件
+        run: node scripts/issue-to-problem.mjs
+      - run: npm run validate
+      - run: npm run generate:index
+      - name: 创建或更新 Pull Request
+        shell: bash
+        run: |
+          branch="issue-${ISSUE_NUMBER}-problem"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add docs/problems docs/public/problem-index.json
+          git commit -m "feat: 从 Issue #${ISSUE_NUMBER} 添加题目"
+          git push --force-with-lease origin "$branch"
+          if gh pr view "$branch" --json url >/dev/null 2>&1; then
+            pr_url=$(gh pr view "$branch" --json url --jq .url)
+          else
+            pr_url=$(gh pr create --base main --head "$branch" --title "从 Issue #${ISSUE_NUMBER} 添加题目" --body "由已审核的 Issue #${ISSUE_NUMBER} 自动生成。合并前请再次核对题目、解答、来源与公式。")
+          fi
+          gh issue comment "$ISSUE_NUMBER" --body "已生成待审核 Pull Request：${pr_url}。题目不会在 PR 合并前发布。"
+

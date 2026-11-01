@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 题目录入说明
+    url: https://mathematicsandcode.github.io/math-competition-bank/guide/contribute
+    about: 提交前请先阅读编号、公式和来源规范
+

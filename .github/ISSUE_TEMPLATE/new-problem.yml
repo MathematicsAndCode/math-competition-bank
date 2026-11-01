@@ -1,0 +1,87 @@
+name: 提交新题
+description: 提交一道待审核的数学竞赛题目
+title: "[新题] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交内容不会直接发布。维护者审核并添加 `approved` 标签后，Action 才会生成 Markdown 和 Pull Request。
+  - type: input
+    id: id
+    attributes:
+      label: 编号
+      description: 代数 A、几何 G、数论 N、组合 C，例如 MCB-A-002
+      placeholder: MCB-A-002
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: 标题
+      placeholder: 简洁、可检索的题目标题
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 分类
+      options: [代数, 几何, 数论, 组合]
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: 难度
+      options: [1 星, 2 星, 3 星, 4 星, 5 星]
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: 标签
+      description: 使用中文逗号或英文逗号分隔
+      placeholder: 不等式, Cauchy不等式
+    validations:
+      required: true
+  - type: input
+    id: stage
+    attributes:
+      label: 适用阶段
+      placeholder: 初中竞赛 / 高中联赛一试 / 高中联赛二试 / CMO / IMO
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 来源
+      description: 必须准确；原创题请明确写“原创”，不确定时不要猜测真实赛事来源
+      placeholder: 本站原创 / 经典问题（公开领域） / 准确赛事与年份
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 题目
+      description: 支持 Markdown 和 LaTeX；行内公式用 $...$，独立公式用 $$...$$
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: 解答
+      description: 请给出完整、可核验的推导
+    validations:
+      required: true
+  - type: textarea
+    id: images
+    attributes:
+      label: 图片（可选）
+      description: 可粘贴 GitHub 上传后的 Markdown 图片语法
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我已核对题目、解答和来源，且未编造赛事出处
+          required: true
+
